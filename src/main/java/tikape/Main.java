@@ -1,4 +1,4 @@
-package tikape.runko;
+package tikape;
 
 import java.util.HashMap;
 import spark.ModelAndView;
