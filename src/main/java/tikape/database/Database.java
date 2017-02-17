@@ -39,20 +39,10 @@ public class Database {
         ArrayList<String> lista = new ArrayList<>();
 
         // tietokantataulujen luomiseen tarvittavat komennot suoritusjärjestyksessä
-        lista.add("CREATE TABLE Alue (id_tunnus integer PRIMARY KEY, nimi varchar(50));");
-        lista.add("INSERT INTO Alue (nimi) VALUES ('Pelit');");
-        lista.add("INSERT INTO Alue (nimi) VALUES ('Elokuvat');");
-        lista.add("INSERT INTO Alue (nimi) VALUES ('Kirjat');");
-        
-        lista.add("CREATE TABLE Ketju (id_tunnus integer PRIMARY KEY, nimi varchar(50) NOT NULL, alue integer NOT NULL, FOREIGN KEY(alue) REFERENCES Alue(id_tunnus));");
-        lista.add("INSERT INTO Ketju (nimi, alue) VALUES ('Borderlands 2', 1);");
-        lista.add("INSERT INTO Ketju (nimi, alue) VALUES ('Skyrim', 1);");
-        lista.add("INSERT INTO Ketju (nimi, alue) VALUES ('Harry Potter', 3);");
-        
-        lista.add("CREATE TABLE Viesti (id_tunnus integer PRIMARY KEY, viesti varchar(500), aikaleima timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, kirjoittaja varchar(16) NOT NULL, ketju integer NOT NULL, FOREIGN KEY(ketju) REFERENCES Ketju(id_tunnus));");
-        lista.add("INSERT INTO Viesti (viesti, kirjoittaja, ketju) VALUES ('Jeejee', 'boo', 1);");
-        lista.add("INSERT INTO Viesti (viesti, kirjoittaja, ketju) VALUES ('kirjoitan hieman', 'lol', 3);");
-        lista.add("INSERT INTO Viesti (viesti, kirjoittaja, ketju) VALUES ('woohoo', 'omg', 3);");
+        lista.add("CREATE TABLE Opiskelija (id integer PRIMARY KEY, nimi varchar(255));");
+        lista.add("INSERT INTO Opiskelija (nimi) VALUES ('Platon');");
+        lista.add("INSERT INTO Opiskelija (nimi) VALUES ('Aristoteles');");
+        lista.add("INSERT INTO Opiskelija (nimi) VALUES ('Homeros');");
 
         return lista;
     }
