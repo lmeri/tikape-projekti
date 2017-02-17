@@ -9,7 +9,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import tikape.domain.Alue;
@@ -77,6 +79,19 @@ public class AlueDao implements Dao<Alue, Integer> {
     @Override
     public void delete(Integer key) throws SQLException {
         //nope
+    }
+    
+    public void insertAlue(String nimi) throws SQLException {
+        Connection connection = database.getConnection();
+        
+        PreparedStatement stmt = connection.prepareStatement("INSERT INTO Alue (nimi) VALUES (?)");
+
+        stmt.setString(1, nimi);
+        stmt.executeUpdate();
+        
+        stmt.close();
+        connection.close();
+
     }
 
 }
