@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tikape.runko.database;
+package tikape.database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import tikape.runko.domain.Opiskelija;
+import tikape.domain.Opiskelija;
 
 public class OpiskelijaDao implements Dao<Opiskelija, Integer> {
 
@@ -54,7 +54,7 @@ public class OpiskelijaDao implements Dao<Opiskelija, Integer> {
         ResultSet rs = stmt.executeQuery();
         List<Opiskelija> opiskelijat = new ArrayList<>();
         while (rs.next()) {
-            Integer id = rs.getInt("id");
+            Integer id = rs.getInt("id_tunnus");
             String nimi = rs.getString("nimi");
 
             opiskelijat.add(new Opiskelija(id, nimi));
