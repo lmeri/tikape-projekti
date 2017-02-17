@@ -75,6 +75,29 @@ public class AlueDao implements Dao<Alue, Integer> {
 
         return alueet;
     }
+    
+    public List<Alue> alueet() throws SQLException {
+        Connection connection = database.getConnection();
+        PreparedStatement stmt = connection.prepareStatement("SELECT Alue.id_tunnus, Alue.nimi, COUNT(Viesti.id_tunnus) AS viestit, max(Viesti.aikaleima) AS viimeisin FROM Viesti JOIN Ketju ON Viesti.ketju = Ketju.id_tunnus JOIN Alue ON Ketju.alue = Alue.id_tunnus GROUP BY Alue.nimi ORDER BY Alue.id_tunnus ASC");
+        
+        List<Alue> alueet = new ArrayList<>();
+        
+        
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Integer id = rs.getInt(1);
+            String nimi = rs.getString(2);
+
+            alueet.add(new Alue(id, nimi));
+        }
+
+        rs.close();
+        stmt.close();
+        connection.close();
+
+        return alueet;
+    }
 
     @Override
     public void delete(Integer key) throws SQLException {

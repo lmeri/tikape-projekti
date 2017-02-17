@@ -2,15 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title>Keskustelupalsta</title>
+        <title>Tämä on alue</title>
         <meta charset="utf-8" />
     </head>
 
     <body>
-        <h1>TIKAPE</h1>
+        <h1>Hei <span th:text="${Alue.nimi}">alue</span>!</h1>
 
-        <p> <span th:text="${viesti}">jotain?</span></p>
-
-        <p><a href="/alueet">Tästä listaukseen.</a></p>
+        <p>Olet saapunut alueelle: <span th:text="${Alue.nimi}">opiskelija</span> henkilökohtaiselle sivulle.</p>
     </body>
 </html>

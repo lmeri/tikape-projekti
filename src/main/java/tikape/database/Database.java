@@ -39,10 +39,16 @@ public class Database {
         ArrayList<String> lista = new ArrayList<>();
 
         // tietokantataulujen luomiseen tarvittavat komennot suoritusjärjestyksessä
-        lista.add("CREATE TABLE Opiskelija (id integer PRIMARY KEY, nimi varchar(255));");
-        lista.add("INSERT INTO Opiskelija (nimi) VALUES ('Platon');");
-        lista.add("INSERT INTO Opiskelija (nimi) VALUES ('Aristoteles');");
-        lista.add("INSERT INTO Opiskelija (nimi) VALUES ('Homeros');");
+        lista.add("CREATE TABLE Alue (id integer PRIMARY KEY, nimi varchar(50));");
+        lista.add("INSERT INTO Alue (nimi) VALUES ('Elokuvat');");
+        lista.add("INSERT INTO Alue (nimi) VALUES ('Pelit);");
+        lista.add("INSERT INTO Alue (nimi) VALUES ('Kirjat');");
+        
+        lista.add("CREATE TABLE Ketju (id integer PRIMARY KEY, nimi varchar(255));");
+
+        
+        lista.add("CREATE TABLE Viesti (id integer PRIMARY KEY, nimi varchar(255));");
+
 
         return lista;
     }

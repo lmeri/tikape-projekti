@@ -2,15 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title>Keskustelupalsta</title>
+        <title>Alue listaus</title>
         <meta charset="utf-8" />
     </head>
 
     <body>
-        <h1>TIKAPE</h1>
+        <h1>Hei!</h1>
 
-        <p> <span th:text="${viesti}">jotain?</span></p>
-
-        <p><a href="/alueet">Tästä listaukseen.</a></p>
+        <ol>
+            <li th:each="aluet: ${alue}">
+                <span th:text="${aluet}"></span> 
+            </li>
+        </ol>
     </body>
 </html>
