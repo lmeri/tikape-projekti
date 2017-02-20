@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title>Alue listaus</title>
+        <title>Etusivu</title>
         <meta charset="utf-8" />
     </head>
 
@@ -10,8 +10,8 @@
         <h1>Hei!</h1>
 
         <ol>
-            <li th:each="aluet: ${alue}">
-                <span th:text="${aluet}"></span> 
+            <li th:each="alue: ${alueet}">
+                <span th:text="${alue.nimi}">Alue nimi</span> <a th:href="${'/alueet/' + alue.id}">linkki</a>
             </li>
         </ol>
     </body>

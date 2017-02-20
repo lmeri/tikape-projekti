@@ -7,15 +7,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import tikape.domain.Alue;
 import tikape.domain.Ketju;
 import tikape.domain.Viesti;
 
 public class KetjuDao implements Dao<Ketju, Integer> {
 
     private Database database;
+    //private Dao<Alue, Integer> alueDao;
 
     public KetjuDao(Database database) {
         this.database = database;
+        //this.alueDao = alueDao;
     }
 
     @Override
@@ -66,7 +69,7 @@ public class KetjuDao implements Dao<Ketju, Integer> {
         return ketjut;
     }
 
-    public List<Ketju> getLastTen() throws SQLException {
+    public List<Ketju> getLastTen(Integer alueId) throws SQLException {
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Ketju WHERE alue = ? ORDER BY id_tunnus DESC LIMIT 10");
 

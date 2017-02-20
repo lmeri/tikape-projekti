@@ -13,15 +13,18 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import tikape.domain.Ketju;
 import tikape.domain.Viesti;
 
 
 public class ViestiDao implements Dao<Viesti, Integer>{
     
     private Database database;
+    //private Dao<Ketju, Integer> ketjuDao;
     
     public ViestiDao(Database database) {
         this.database = database;
+        //this.ketjuDao = ketjuDao;
     }
 
     @Override
@@ -55,6 +58,29 @@ public class ViestiDao implements Dao<Viesti, Integer>{
     public List<Viesti> findAll() throws SQLException {
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Viesti");
+
+        ResultSet rs = stmt.executeQuery();
+        List<Viesti> viestit = new ArrayList<>();
+        while (rs.next()) {
+            Integer id = rs.getInt("id");
+            String kirjoittaja = rs.getString("kirjoittaja");
+            String viesti = rs.getString("viesti");
+            Integer ketju = rs.getInt("ketju");
+            Timestamp aika= rs.getTimestamp("aikaleima");
+
+            viestit.add(new Viesti(id, kirjoittaja, viesti, ketju, aika));
+        }
+
+        rs.close();
+        stmt.close();
+        connection.close();
+
+        return viestit;
+    }
+    
+    public List<Viesti> getAllFromKetju(Integer ketjuId) throws SQLException {
+        Connection connection = database.getConnection();
+        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Viesti WHERE ketju = ?");
 
         ResultSet rs = stmt.executeQuery();
         List<Viesti> viestit = new ArrayList<>();

@@ -88,8 +88,10 @@ public class AlueDao implements Dao<Alue, Integer> {
         while (rs.next()) {
             Integer id = rs.getInt(1);
             String nimi = rs.getString(2);
+            Integer lkm = rs.getInt(3);
+            Timestamp aika = rs.getTimestamp(4);
 
-            alueet.add(new Alue(id, nimi));
+            alueet.add(new Alue(id, nimi, lkm, aika));
         }
 
         rs.close();
