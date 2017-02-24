@@ -19,17 +19,15 @@ public class Main {
         AlueDao alueDao = new AlueDao(database);
         KetjuDao ketjuDao = new KetjuDao(database);
         ViestiDao viestiDao = new ViestiDao(database);
-        
-        // "Etusivu", Keskustelufoorumin alkunäkymä, näyttää kaikki alueet.
 
+        // "Etusivu", Keskustelufoorumin alkunäkymä, näyttää kaikki alueet.
         get("/", (req, res) -> {
             HashMap map = new HashMap<>();
             map.put("alueet", alueDao.findAll());
             return new ModelAndView(map, "alueet");
         }, new ThymeleafTemplateEngine());
-        
+
         // Näkymä kun on valittu alue. Listaa kymmenen viimeisintä ketjua.
-        
         get("/alueet/:alue", (req, res) -> {
             HashMap map = new HashMap<>();
             map.put("ketjut", ketjuDao.getLastTen(Integer.parseInt(req.params("alue"))));
@@ -37,7 +35,6 @@ public class Main {
         }, new ThymeleafTemplateEngine());
 
         // Näkymä kun on valittu Ketju. Listaa ketjun viestit.
-        
         get("/:alue/:ketju", (req, res) -> {
             HashMap map = new HashMap<>();
             map.put("viestit", viestiDao.getAllFromKetju(Integer.parseInt(req.params("ketju"))));
