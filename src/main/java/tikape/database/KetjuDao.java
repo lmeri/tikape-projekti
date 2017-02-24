@@ -68,6 +68,28 @@ public class KetjuDao implements Dao<Ketju, Integer> {
 
         return ketjut;
     }
+    
+
+    public List<Ketju> findAllFrom(Integer key) throws SQLException {
+
+        Connection connection = database.getConnection();
+        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Ketju WHERE alue = ?");
+        ResultSet rs = stmt.executeQuery();
+        
+        List<Ketju> ketjut = new ArrayList<>();
+        
+        while (rs.next()) {
+            Integer id_tunnus = rs.getInt("id_tunnus");
+            String nimi = rs.getString("nimi");
+            Integer alue = rs.getInt("alue");
+
+            ketjut.add(new Ketju(id_tunnus, nimi, alue));
+        }
+
+        connection.close();
+
+        return ketjut;
+    }
 
     public List<Ketju> getLastTen(Integer alueId) throws SQLException {
         Connection connection = database.getConnection();

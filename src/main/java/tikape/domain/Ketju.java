@@ -32,7 +32,7 @@ public class Ketju {
         this.lista.add(viesti);
     }
 
-    public Integer getAlue() {
+    public int getAlue() {
         return this.alue;
     }
 

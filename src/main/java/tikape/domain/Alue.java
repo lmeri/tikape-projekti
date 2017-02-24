@@ -53,9 +53,13 @@ public class Alue {
         return nimi;
     }
     
-//    public Ketju getKetju() {
-//        
-//    }
+    public ArrayList<Ketju> getKetju() {
+        return lista;
+    }
+    
+    public void setKetju(ArrayList<Ketju> ketjut) {
+        this.lista = ketjut;
+    }
     
 
 }
