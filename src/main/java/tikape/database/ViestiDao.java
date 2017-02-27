@@ -43,7 +43,7 @@ public class ViestiDao implements Dao<Viesti, Integer>{
         String kirjoittaja = rs.getString("kirjoittaja");
         String viesti = rs.getString("viesti");
         Integer ketju = rs.getInt("ketju");
-        Timestamp aika= rs.getTimestamp("aikaleima");
+        String aika= rs.getString("aikaleima");
 
         Viesti v = new Viesti(id, kirjoittaja, viesti, ketju, aika);
 
@@ -66,7 +66,7 @@ public class ViestiDao implements Dao<Viesti, Integer>{
             String kirjoittaja = rs.getString("kirjoittaja");
             String viesti = rs.getString("viesti");
             Integer ketju = rs.getInt("ketju");
-            Timestamp aika= rs.getTimestamp("aikaleima");
+            String aika= rs.getString("aikaleima");
 
             viestit.add(new Viesti(id, kirjoittaja, viesti, ketju, aika));
         }
@@ -81,15 +81,15 @@ public class ViestiDao implements Dao<Viesti, Integer>{
     public List<Viesti> getAllFromKetju(Integer ketjuId) throws SQLException {
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Viesti WHERE ketju = ?");
-
+        stmt.setInt(1, ketjuId);
         ResultSet rs = stmt.executeQuery();
         List<Viesti> viestit = new ArrayList<>();
         while (rs.next()) {
-            Integer id = rs.getInt("id");
+            Integer id = rs.getInt("id_tunnus");
             String kirjoittaja = rs.getString("kirjoittaja");
             String viesti = rs.getString("viesti");
             Integer ketju = rs.getInt("ketju");
-            Timestamp aika= rs.getTimestamp("aikaleima");
+            String aika= rs.getString("aikaleima");
 
             viestit.add(new Viesti(id, kirjoittaja, viesti, ketju, aika));
         }

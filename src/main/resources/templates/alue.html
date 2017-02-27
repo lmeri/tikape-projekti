@@ -13,7 +13,7 @@
 
         <ol>
             <li th:each="ketju: ${ketjut}">
-                <span th:text="${ketju.nimi}">Ketju nimi</span> <a th:href="@{~/{id} (id=${ketju.id})}">linkki</a>
+                <span th:text="${ketju.nimi}">Ketju nimi</span> <a th:href="@{~/alueet/{ids}/{id} (ids=${ketju.alue}, id=${ketju.id})}">linkki</a>
             </li>
             
 

@@ -40,11 +40,11 @@ public class Main {
         }, new ThymeleafTemplateEngine());
 
         // Näkymä kun on valittu Ketju. Listaa ketjun viestit.
-        get("/:alue/:ketju", (req, res) -> {
+        get("alueet/:alue/:ketju", (req, res) -> {
             HashMap map = new HashMap<>();
             map.put("viestit", viestiDao.getAllFromKetju(Integer.parseInt(req.params("ketju"))));
 
-            return new ModelAndView(map, "ketju");
+            return new ModelAndView(map, "viesti");
         }, new ThymeleafTemplateEngine());
     }
 }

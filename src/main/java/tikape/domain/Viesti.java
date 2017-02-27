@@ -13,9 +13,9 @@ public class Viesti {
     private String kirjoittaja;
     private String viesti;
     private int ketju;
-    private Timestamp aikaleima;
+    private String aikaleima;
     
-    public Viesti(int id_tunnus, String kirjoittaja, String viesti, int ketju, Timestamp aikaleima) {
+    public Viesti(int id_tunnus, String kirjoittaja, String viesti, int ketju, String aikaleima) {
         this.id_tunnus = id_tunnus;
         this.kirjoittaja = kirjoittaja;
         this.viesti = viesti;
@@ -52,11 +52,11 @@ public class Viesti {
     public void setKetju (Integer ketju) {
         this.ketju = ketju;
     }
-    public Timestamp getAikaleima () {
+    public String getAikaleima () {
         return this.aikaleima;
     }
     
-    public void setAikaleima (Timestamp aika) {
+    public void setAikaleima (String aika) {
         this.aikaleima = aika;
     }
     
