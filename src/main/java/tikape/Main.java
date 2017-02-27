@@ -7,7 +7,6 @@ import spark.template.thymeleaf.ThymeleafTemplateEngine;
 import tikape.database.AlueDao;
 import tikape.database.Database;
 import tikape.database.KetjuDao;
-import tikape.database.OpiskelijaDao;
 import tikape.database.ViestiDao;
 
 public class Main {
