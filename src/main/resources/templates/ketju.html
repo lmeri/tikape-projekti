@@ -10,5 +10,12 @@
         <h1><span th:text="${ketju.nimi}">ketju</span>!</h1>
 
         <p>Olet saapunut ketjuun: <span th:text="${ketju.nimi}">ketju</span> </p>
+
+        <form method="POST" action="/ketju">
+            Uusi viesti:<br/>
+            <input type="text" name="viesti"/><br/>
+            <input type="submit" value="Lähetä"/>
+        </form>
+        
     </body>
 </html>
