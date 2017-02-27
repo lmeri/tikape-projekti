@@ -74,6 +74,7 @@ public class KetjuDao implements Dao<Ketju, Integer> {
 
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Ketju WHERE alue = ?");
+        stmt.setInt(1, key);
         ResultSet rs = stmt.executeQuery();
         
         List<Ketju> ketjut = new ArrayList<>();

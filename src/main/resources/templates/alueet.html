@@ -11,8 +11,9 @@
 
         <ol>
             <li th:each="alue: ${alueet}">
-                <span th:text="${alue.nimi}">Alue nimi</span> <a th:href="${'/alueet/' + alue.id}">linkki</a>
+                <span th:text="${alue.nimi}">Alue nimi</span> <a th:href="@{~/{id} (id=${alue.id})}">linkki</a>
             </li>
+            
         </ol>
     </body>
 </html>

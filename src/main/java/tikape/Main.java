@@ -35,7 +35,7 @@ public class Main {
         // Näkymä kun on valittu alue. Listaa kymmenen viimeisintä ketjua.
         get("/alueet/:alue", (req, res) -> {
         HashMap map = new HashMap<>();
-            map.put("ketjut", ketjuDao.findAllFrom(Integer.parseInt(req.params(":alue"))));
+            map.put("ketjut", ketjuDao.findAllFrom(Integer.parseInt(req.params("alue"))));
             return new ModelAndView(map, "alue");
         }, new ThymeleafTemplateEngine());
 
