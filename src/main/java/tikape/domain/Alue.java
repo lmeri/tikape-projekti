@@ -17,22 +17,14 @@ public class Alue {
     private Integer id;
     private String nimi;
     private ArrayList<Ketju> lista;
-    private int lkm;
-    private Timestamp aika;
+    private Integer maara;
+    private String aikaleima;
    
 
-    public Alue(Integer i, String n, int lkm, Timestamp aika) {
-        this.id = i;
-        this.nimi = n;
-        this.aika = aika;
-        this.lkm = lkm;
-        this.lista = new ArrayList();
-        
-    }
-    
     public Alue(Integer i, String n) {
         this.id = i;
         this.nimi = n;
+        this.aikaleima = "tyhjä";
         this.lista = new ArrayList();
         
     }
@@ -61,5 +53,20 @@ public class Alue {
         this.lista = ketjut;
     }
     
+    public void setAikaleima(String aika) {
+        this.aikaleima = aika;
+    }
+    
+    public String getAikaleima() {
+        return this.aikaleima;
+    }
+    
+    public void setMaara(Integer maara) {
+        this.maara = maara;
+    }
+    
+    public int getMaara() {
+        return this.maara;
+    }
 
 }

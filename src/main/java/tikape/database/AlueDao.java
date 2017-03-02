@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 import tikape.domain.Alue;
+import tikape.domain.Ketju;
 
 /**
  *
@@ -54,38 +55,19 @@ public class AlueDao implements Dao<Alue, Integer> {
 
     @Override
     public List<Alue> findAll() throws SQLException {
-
         Connection connection = database.getConnection();
-        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Alue");
-
-        ResultSet rs = stmt.executeQuery();
-        List<Alue> alueet = new ArrayList<>();
-        while (rs.next()) {
-            Integer id = rs.getInt("id_tunnus");
-            String nimi = rs.getString("nimi");
-
-            alueet.add(new Alue(id, nimi));
-        }
-
-        rs.close();
-        stmt.close();
-        connection.close();
-
-        return alueet;
-    }
-
-    public List<Alue> alueet() throws SQLException {
-        Connection connection = database.getConnection();
-        PreparedStatement stmt = connection.prepareStatement("SELECT Alue.id_tunnus, Alue.nimi, COUNT(Viesti.id_tunnus) AS viestit, max(Viesti.aikaleima) AS viimeisin FROM Viesti JOIN Ketju ON Viesti.ketju = Ketju.id_tunnus JOIN Alue ON Ketju.alue = Alue.id_tunnus GROUP BY Alue.nimi ORDER BY Alue.id_tunnus ASC");
+        PreparedStatement stmt = connection.prepareStatement("SELECT Alue.id_tunnus, Alue.nimi, MAX(Viesti.aikaleima) AS aikaleima, COUNT(Viesti.id_tunnus) AS maara FROM Alue LEFT JOIN Ketju ON Ketju.alue = Alue.id_tunnus LEFT JOIN Viesti ON Viesti.ketju = Ketju.id_tunnus GROUP BY Alue.id_tunnus ORDER BY Alue.nimi ASC");
         ResultSet rs = stmt.executeQuery();
         List<Alue> alueet = new ArrayList<>();
         while (rs.next()) {
             Integer id = rs.getInt(1);
             String nimi = rs.getString(2);
-            Integer lkm = rs.getInt(3);
-            Timestamp aika = rs.getTimestamp(4);
-
-            alueet.add(new Alue(id, nimi, lkm, aika));
+            String aikaleima = rs.getString("aikaleima");
+            Integer maara = rs.getInt("maara");
+            Alue k = new Alue(id, nimi);
+            k.setAikaleima(aikaleima);
+            k.setMaara(maara);
+            alueet.add(k);
         }
 
         rs.close();

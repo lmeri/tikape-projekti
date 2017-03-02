@@ -2,23 +2,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title>Etusivu</title>
+        <title>Keskustelufoorumi</title>
         <meta charset="utf-8" />
     </head>
 
     <body>
-        <h1>Hei!</h1>
-
+        <center><h1>index</h1></center>
+        <center>
         <ol>
             <li th:each="alue: ${alueet}">
-                <span th:text="${alue.nimi}">Alue nimi</span> <a th:href="@{~/alueet/{id} (id=${alue.id})}">linkki</a>
+                <a th:href="@{~/alueet/{id} (id=${alue.id})}"><span th:text="${alue.nimi}">Alue nimi</span></a>
+                [ <span th:text="${alue.aikaleima}">aikaleima</span>]
+                [ <span th:text="${alue.maara}">maara</span>]
             </li>
         </ol>
-
+        </center>
+        <p/>
+        <p/>
+        <center>
         <form method="POST" action="/alueet">
-            Lisää uusi alue: <br/>
+            Lisää alue (max 50 merkkiä): <br/>
             <input type="text" name="nimi"/><br/>
             <input type="submit" value="Lisää uusi alue"/>
         </form>
+        </center>
     </body>
 </html>

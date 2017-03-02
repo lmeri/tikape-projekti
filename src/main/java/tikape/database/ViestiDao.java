@@ -10,11 +10,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import tikape.domain.Ketju;
 import tikape.domain.Viesti;
+
 
 
 public class ViestiDao implements Dao<Viesti, Integer>{
@@ -46,7 +48,6 @@ public class ViestiDao implements Dao<Viesti, Integer>{
         String aika= rs.getString("aikaleima");
 
         Viesti v = new Viesti(id, kirjoittaja, viesti, ketju, aika);
-
         rs.close();
         stmt.close();
         connection.close();
@@ -89,9 +90,9 @@ public class ViestiDao implements Dao<Viesti, Integer>{
             String kirjoittaja = rs.getString("kirjoittaja");
             String viesti = rs.getString("viesti");
             Integer ketju = rs.getInt("ketju");
-            String aika= rs.getString("aikaleima");
+            String aikaleima = rs.getString("aikaleima");
 
-            viestit.add(new Viesti(id, kirjoittaja, viesti, ketju, aika));
+            viestit.add(new Viesti(id, kirjoittaja, viesti, ketju, aikaleima));
         }
 
         rs.close();
@@ -109,13 +110,14 @@ public class ViestiDao implements Dao<Viesti, Integer>{
     public void insertViesti(String kirjoittaja, String viesti, Integer id) throws SQLException {
         Connection connection = database.getConnection();
         
-        Date paiva = new Date();
-        Timestamp aika = new Timestamp(paiva.getDate());
+        Timestamp a = new Timestamp(System.currentTimeMillis());
+        String aika = a.toString();
+        
         
         PreparedStatement stmt = connection.prepareStatement("INSERT INTO Viesti (viesti, aikaleima, kirjoittaja, ketju) VALUES (?, ?, ?, ?)");
 
         stmt.setString(1, viesti);
-        stmt.setTimestamp(2, aika);
+        stmt.setString(2, aika);
         stmt.setString(3, kirjoittaja);
         stmt.setInt(4, id);
         stmt.executeUpdate();

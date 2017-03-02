@@ -2,26 +2,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title>Ketjun viestit</title>
+        <title>Keskustelufoorumi || viestit</title>
         <meta charset="UTF-8" />
         
     </head>
 
     <body>
-        
+        <center>
        <ol>
             <li th:each="viesti: ${viestit}">
-                <span th:text="${viesti.viesti}">Viesti nimi</span>
-                <span th:text="${viesti.kirjoittaja}">Kirjoittaja</span>
+                @: <span th:text="${viesti.kirjoittaja}">Kirjoittaja</span><br/>
+                [ <span th:text="${viesti.aikaleima}">aika</span>]<br/>
+                <span th:text="${viesti.viesti}">Viesti nimi</span><br/><br/>  
             </li>
         </ol>
-
-        <form method="POST">
-            Kirjoittaja:  <br/>
+        </center>
+        <p/>
+        <p/>
+        <center>
+        <form method="POST" id="kentta">
+            Kirjoittaja (max 16 merkkiä):  <br/>
             <input type="text" name="kirjoittaja"/><br/>
-            Lisää viesti: <br/>
-            <input type="text" name="viesti"/><br/>
+            Viesti (max 500 merkkiä): <br/>
+            <textarea rows="4" cols="50" name="viesti" form="kentta"></textarea><br/>
             <input type="submit" value="Lisää uusi viesti"/>
         </form>
+        
+        </center>
     </body>
 </html>

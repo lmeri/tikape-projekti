@@ -1,5 +1,6 @@
 package tikape;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import spark.ModelAndView;
 import static spark.Spark.*;
@@ -8,6 +9,8 @@ import tikape.database.AlueDao;
 import tikape.database.Database;
 import tikape.database.KetjuDao;
 import tikape.database.ViestiDao;
+import tikape.domain.Alue;
+import tikape.domain.Ketju;
 
 public class Main {
 
@@ -42,10 +45,10 @@ public class Main {
         get("alueet/:alue/:viesti", (req, res) -> {
             HashMap map = new HashMap<>();
             map.put("viestit", viestiDao.getAllFromKetju(Integer.parseInt(req.params("viesti"))));
-
             return new ModelAndView(map, "viesti");
         }, new ThymeleafTemplateEngine());
 
+        // Metodi uuden alueen lisäämiseen.
         post("/alueet", (req, res) -> {
             String nimi = req.queryParams("nimi");
             alueDao.insertAlue(nimi);
@@ -53,6 +56,7 @@ public class Main {
             return "ok";
         });
 
+        // Metodi uuden ketjun lisäämiseen.
         post("/alueet/:alue", (req, res) -> {
             String nimi = req.queryParams("nimi");
             ketjuDao.insertKetju(nimi, Integer.parseInt(req.params("alue")));
@@ -60,6 +64,7 @@ public class Main {
             return "ok";
         });
 
+        // Metodi uuden viestin lisäämiseen.
         post("alueet/:alue/:viesti", (req, res) -> {
             String nimi = req.queryParams("kirjoittaja");
             String viesti = req.queryParams("viesti");
