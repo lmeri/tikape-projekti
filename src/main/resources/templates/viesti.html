@@ -6,14 +6,21 @@
         <meta charset="UTF-8" />
         
     </head>
-    
+
     <body>
         
        <ol>
+        <ol>
             <li th:each="viesti: ${viestit}">
                 <span th:text="${viesti.viesti}">Viesti nimi</span>
             </li>
-            
         </ol>
+
+        <form method="POST" action="/alue/:alue">
+            Lisää uusi viesti:  <br/>
+            <input type="text" name="kirjoittaja"/><br/>
+            <input type="text" name="viesti"/><br/>
+            <input type="submit" value="Lisää uusi viesti"/>
+        </form>
     </body>
 </html>

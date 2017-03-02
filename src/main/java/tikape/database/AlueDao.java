@@ -16,8 +16,6 @@ import java.util.List;
 
 import tikape.domain.Alue;
 
-
-
 /**
  *
  * @author mkatri
@@ -56,7 +54,7 @@ public class AlueDao implements Dao<Alue, Integer> {
 
     @Override
     public List<Alue> findAll() throws SQLException {
-        
+
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Alue");
 
@@ -75,14 +73,13 @@ public class AlueDao implements Dao<Alue, Integer> {
 
         return alueet;
     }
-    
+
     public List<Alue> alueet() throws SQLException {
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("SELECT Alue.id_tunnus, Alue.nimi, COUNT(Viesti.id_tunnus) AS viestit, max(Viesti.aikaleima) AS viimeisin FROM Viesti JOIN Ketju ON Viesti.ketju = Ketju.id_tunnus JOIN Alue ON Ketju.alue = Alue.id_tunnus GROUP BY Alue.nimi ORDER BY Alue.id_tunnus ASC");
-        
+
         List<Alue> alueet = new ArrayList<>();
-        
-        
+
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
@@ -105,15 +102,14 @@ public class AlueDao implements Dao<Alue, Integer> {
     public void delete(Integer key) throws SQLException {
         //nope
     }
-    
-    public void insertAlue(String nimi) throws SQLException {
-        Connection connection = database.getConnection();
-        
-        PreparedStatement stmt = connection.prepareStatement("INSERT INTO Alue (nimi) VALUES (?)");
 
-        stmt.setString(1, nimi);
+    public void insertAlue(String key) throws SQLException {
+        Connection connection = database.getConnection();
+
+        PreparedStatement stmt = connection.prepareStatement("INSERT INTO Alue (nimi) VALUES (?)");
+        stmt.setString(1, key);
         stmt.executeUpdate();
-        
+
         stmt.close();
         connection.close();
 

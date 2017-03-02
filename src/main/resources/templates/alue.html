@@ -2,21 +2,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title>Tämä on alue</title>
+        <title>Tässä on alueen ketjut</title>
         <meta charset="utf-8" />
     </head>
 
     <body>
 
-
-        
-
         <ol>
             <li th:each="ketju: ${ketjut}">
                 <span th:text="${ketju.nimi}">Ketju nimi</span> <a th:href="@{~/alueet/{ids}/{id} (ids=${ketju.alue}, id=${ketju.id})}">linkki</a>
             </li>
-            
-
         </ol>
+        
+        <form method="POST" action="/alue">
+            Lisää uusi ketju:  <br/>
+            <input type="text" name="nimi"/><br/>
+            <input type="submit" value="Lisää uusi ketju"/>
+        </form>
     </body>
 </html>
