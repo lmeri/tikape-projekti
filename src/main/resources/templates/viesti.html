@@ -12,6 +12,7 @@
        <ol>
             <li th:each="viesti: ${viestit}">
                 <span th:text="${viesti.viesti}">Viesti nimi</span>
+                <span th:text="${viesti.kirjoittaja}">Kirjoittaja</span>
             </li>
         </ol>
 
