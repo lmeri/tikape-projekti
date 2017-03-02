@@ -39,9 +39,9 @@ public class Main {
         }, new ThymeleafTemplateEngine());
 
         // Näkymä kun on valittu Ketju. Listaa ketjun viestit.
-        get("alueet/:alue/:ketju", (req, res) -> {
+        get("alueet/:alue/:viesti", (req, res) -> {
             HashMap map = new HashMap<>();
-            map.put("viestit", viestiDao.getAllFromKetju(Integer.parseInt(req.params("ketju"))));
+            map.put("viestit", viestiDao.getAllFromKetju(Integer.parseInt(req.params("viesti"))));
 
             return new ModelAndView(map, "viesti");
         }, new ThymeleafTemplateEngine());
@@ -49,19 +49,22 @@ public class Main {
         post("/alueet", (req, res) -> {
             String nimi = req.queryParams("nimi");
             alueDao.insertAlue(nimi);
+            res.redirect("/alueet");
             return "ok";
         });
 
-        post("/alue/:alue", (req, res) -> {
+        post("/alueet/:alue", (req, res) -> {
             String nimi = req.queryParams("nimi");
             ketjuDao.insertKetju(nimi, Integer.parseInt(req.params("alue")));
+            res.redirect("/alueet/" + req.params(":alue"));
             return "ok";
         });
 
-        post("/:alue/:ketju", (req, res) -> {
+        post("/:alue/:viesti", (req, res) -> {
             String nimi = req.queryParams("kirjoittaja");
             String viesti = req.queryParams("viesti");
-            viestiDao.insertViesti(nimi, viesti, Integer.parseInt(req.params("ketju")));
+            viestiDao.insertViesti(nimi, viesti, Integer.parseInt(req.params("viesti")));
+            res.redirect(req.params(":alue") + req.params(":viesti"));
             return "ok";
         });
     }

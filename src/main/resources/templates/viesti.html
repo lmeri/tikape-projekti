@@ -10,15 +10,15 @@
     <body>
         
        <ol>
-        <ol>
             <li th:each="viesti: ${viestit}">
                 <span th:text="${viesti.viesti}">Viesti nimi</span>
             </li>
         </ol>
 
-        <form method="POST" action="/alue/:alue">
-            Lisää uusi viesti:  <br/>
+        <form method="POST">
+            Kirjoittaja:  <br/>
             <input type="text" name="kirjoittaja"/><br/>
+            Lisää viesti: <br/>
             <input type="text" name="viesti"/><br/>
             <input type="submit" value="Lisää uusi viesti"/>
         </form>
