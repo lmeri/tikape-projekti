@@ -112,7 +112,7 @@ public class ViestiDao implements Dao<Viesti, Integer>{
         Date paiva = new Date();
         Timestamp aika = new Timestamp(paiva.getDate());
         
-        PreparedStatement stmt = connection.prepareStatement("INSERT INTO Viesti (viesti, aikaleima, kirjoittaja, nimimerkki) VALUES (?, ?, ?, ?)");
+        PreparedStatement stmt = connection.prepareStatement("INSERT INTO Viesti (viesti, aikaleima, kirjoittaja, ketju) VALUES (?, ?, ?, ?)");
 
         stmt.setString(1, viesti);
         stmt.setTimestamp(2, aika);

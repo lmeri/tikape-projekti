@@ -60,11 +60,11 @@ public class Main {
             return "ok";
         });
 
-        post("/:alue/:viesti", (req, res) -> {
+        post("alueet/:alue/:viesti", (req, res) -> {
             String nimi = req.queryParams("kirjoittaja");
             String viesti = req.queryParams("viesti");
             viestiDao.insertViesti(nimi, viesti, Integer.parseInt(req.params("viesti")));
-            res.redirect(req.params(":alue") + req.params(":viesti"));
+            res.redirect("/alueet/" + req.params(":alue") + "/" + req.params(":viesti"));
             return "ok";
         });
     }
