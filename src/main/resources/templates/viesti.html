@@ -10,14 +10,19 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    
+
     <body>
-       <ol>
+        <ol>
             <li th:each="viesti: ${viestit}">
                 <span th:text="${viesti.nimi}">Viesti nimi</span>
             </li>
-            
-
         </ol>
+
+        <form method="POST" action="/alue/:alue">
+            Lisää uusi viesti:  <br/>
+            <input type="text" name="kirjoittaja"/><br/>
+            <input type="text" name="viesti"/><br/>
+            <input type="submit" value="Lisää uusi viesti"/>
+        </form>
     </body>
 </html>

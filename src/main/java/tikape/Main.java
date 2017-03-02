@@ -19,7 +19,7 @@ public class Main {
         AlueDao alueDao = new AlueDao(database);
         KetjuDao ketjuDao = new KetjuDao(database);
         ViestiDao viestiDao = new ViestiDao(database);
-        
+
         get("/", (req, res) -> {
             res.redirect("/alueet");
             return "ok";
@@ -34,7 +34,7 @@ public class Main {
 
         // Näkymä kun on valittu alue. Listaa kymmenen viimeisintä ketjua.
         get("/alueet/:alue", (req, res) -> {
-        HashMap map = new HashMap<>();
+            HashMap map = new HashMap<>();
             map.put("ketjut", ketjuDao.findAllFrom(Integer.parseInt(req.params("alue"))));
             return new ModelAndView(map, "alue");
         }, new ThymeleafTemplateEngine());
@@ -46,5 +46,24 @@ public class Main {
 
             return new ModelAndView(map, "ketju");
         }, new ThymeleafTemplateEngine());
+
+        post("/alueet", (req, res) -> {
+            String nimi = req.queryParams("nimi");
+            alueDao.insertAlue(nimi);
+            return "ok";
+        });
+
+        post("/alue/:alue", (req, res) -> {
+            String nimi = req.queryParams("nimi");
+            ketjuDao.insertKetju(nimi, Integer.parseInt(req.params("alue")));
+            return "ok";
+        });
+
+        post("/:alue/:ketju", (req, res) -> {
+            String nimi = req.queryParams("kirjoittaja");
+            String viesti = req.queryParams("viesti");
+            viestiDao.insertViesti(nimi, viesti, Integer.parseInt(req.params("ketju")));
+            return "ok";
+        });
     }
 }
