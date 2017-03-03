@@ -78,13 +78,13 @@ public class Database {
         ArrayList<String> lista = new ArrayList<>();
 
         // tietokantataulujen luomiseen tarvittavat komennot suoritusjärjestyksessä
-        lista.add("CREATE TABLE Alue (id integer PRIMARY KEY, nimi varchar(50));");
+        //lista.add("CREATE TABLE Alue (id integer PRIMARY KEY, nimi varchar(50));");
 
         
-        lista.add("CREATE TABLE Ketju (id integer PRIMARY KEY, nimi varchar(50), alue integer NOT NULL, FOREIGN KEY(alue) REFERENCES Alue.id_tunnus);");
+        //lista.add("CREATE TABLE Ketju (id integer PRIMARY KEY, nimi varchar(50), alue integer NOT NULL, FOREIGN KEY(alue) REFERENCES Alue.id_tunnus);");
 
         
-        lista.add("CREATE TABLE Viesti (id_tunnus integer PRIMARY KEY, viesti varchar(500), aikaleima timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, kirjoittaja varchar(16) NOT NULL, ketju integer NOT NULL, FOREIGN KEY(ketju) REFERENCES Ketju(id_tunnus));");
+        //lista.add("CREATE TABLE Viesti (id_tunnus integer PRIMARY KEY, viesti varchar(500), aikaleima timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, kirjoittaja varchar(16) NOT NULL, ketju integer NOT NULL, FOREIGN KEY(ketju) REFERENCES Ketju(id_tunnus));");
 
 
         return lista;

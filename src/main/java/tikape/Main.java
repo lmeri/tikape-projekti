@@ -70,8 +70,8 @@ public class Main {
         // Metodi uuden ketjun lisäämiseen.
         post("/alueet/:alue", (req, res) -> {
             String nimi = req.queryParams("nimi");
-            int x = ketjuDao.insertKetju(nimi, Integer.parseInt(req.params("alue")));
-            res.redirect("/alueet/" + req.params(":alue") + "/" + x);
+            ketjuDao.insertKetju(nimi, Integer.parseInt(req.params("alue")));
+            res.redirect("/alueet/" + req.params(":alue"));
             return "ok";
         });
 
