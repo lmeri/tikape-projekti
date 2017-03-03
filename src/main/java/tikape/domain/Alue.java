@@ -16,7 +16,6 @@ public class Alue {
 
     private Integer id;
     private String nimi;
-    private ArrayList<Ketju> lista;
     private Integer maara;
     private String aikaleima;
    
@@ -25,7 +24,6 @@ public class Alue {
         this.id = i;
         this.nimi = n;
         this.aikaleima = "tyhjä";
-        this.lista = new ArrayList();
         
     }
 
@@ -43,14 +41,6 @@ public class Alue {
 
     public String getNimi() {
         return nimi;
-    }
-    
-    public ArrayList<Ketju> getKetju() {
-        return lista;
-    }
-    
-    public void setKetju(ArrayList<Ketju> ketjut) {
-        this.lista = ketjut;
     }
     
     public void setAikaleima(String aika) {

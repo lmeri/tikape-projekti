@@ -8,7 +8,6 @@ public class Ketju {
     private Integer id_tunnus;
     private String nimi;
     private Integer alue;
-    private ArrayList<Viesti> lista;
     private String aikaleima;
     private Integer maara;
 
@@ -16,7 +15,6 @@ public class Ketju {
         this.id_tunnus = id_tunnus;
         this.nimi = nimi;
         this.alue = alue;
-        this.lista = new ArrayList<Viesti>();
         this.aikaleima = "ketju on tyhjä";
     }
 
@@ -28,13 +26,6 @@ public class Ketju {
         return this.nimi;
     }
     
-    public ArrayList<Viesti> getViestit(){
-        return this.lista;
-    }
-    
-    public void lisaaViesti(Viesti viesti){
-        this.lista.add(viesti);
-    }
 
     public int getAlue() {
         return this.alue;
