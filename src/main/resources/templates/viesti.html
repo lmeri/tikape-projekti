@@ -6,15 +6,21 @@
         <meta charset="UTF-8" />
         
         <style type="text/css">
-            a:hover {background-color:peachpuff; text-decoration: none}
+            body {background-color: #FFFBEE;}
+            
+            a:hover {background-color:peachpuff; text-decoration: none; cursor: pointer}
             a:link {color: black; text-decoration: none}
             a:visited {color: darkgray; text-decoration: none}
+            
+            .button {background-color: gainsboro; color: black; border: 1px solid darkgray; border-radius: 3px}
+            .button:hover {background-color: darkgray; color: whitesmoke; cursor: pointer}
+            
         </style>
         
     </head>
 
-    <body bgcolor="#F5ECCE">
-        <center><h1>Tervetuloa ^_^</h1></center>
+    <body>
+        <center><h1>(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ <span th:text="${ketju.nimi}"></span></h1></center>
         
         <center>
             <tr th:each="viesti: ${viestit}">
@@ -29,22 +35,21 @@
             </tr> 
         </center>
         
-        <p/><p/>
         
         <center>
-        <form method="POST" id="kentta">
+        <form method="POST" id="kentta" style=" padding-top: 40px">
             Kirjoittaja (max 16 merkkiä):  <br/>
             <input type="text" name="kirjoittaja"/><br/>
             Viesti (max 500 merkkiä): <br/>
             <textarea rows="4" cols="50" name="viesti" form="kentta"></textarea><br/>
-            <input type="submit" value="Lisää uusi viesti"/>
+            <input class="button" type="submit" value="Lisää uusi viesti"/>
         </form>
         </center>
         
         <p/><p/><p/><p/>
         
         <center>
-             <a href="/alueet">[Etusivu]</a><a href="javascript:history.back()">[Edellinen]</a>
+             <a href="/alueet">[etusivu]</a><a href="javascript:history.back()">[edellinen]</a>
         </center>
     </body>
 </html>

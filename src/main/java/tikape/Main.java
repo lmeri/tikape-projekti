@@ -49,6 +49,7 @@ public class Main {
         get("/alueet/:alue", (req, res) -> {
             HashMap map = new HashMap<>();
             map.put("ketjut", ketjuDao.findAllFrom(Integer.parseInt(req.params("alue"))));
+            map.put("alue", alueDao.findOne(Integer.parseInt(req.params("alue"))));
             return new ModelAndView(map, "alue");
         }, new ThymeleafTemplateEngine());
 
@@ -56,6 +57,7 @@ public class Main {
         get("alueet/:alue/:viesti", (req, res) -> {
             HashMap map = new HashMap<>();
             map.put("viestit", viestiDao.getAllFromKetju(Integer.parseInt(req.params("viesti"))));
+            map.put("ketju", ketjuDao.findOne(Integer.parseInt(req.params("viesti"))));
             return new ModelAndView(map, "viesti");
         }, new ThymeleafTemplateEngine());
 

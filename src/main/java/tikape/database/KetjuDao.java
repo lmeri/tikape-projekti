@@ -70,7 +70,6 @@ public class KetjuDao implements Dao<Ketju, Integer> {
     }
 
     public ArrayList<Ketju> findAllFrom(Integer key) throws SQLException {
-
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("SELECT Ketju.id_tunnus, Ketju.nimi, Ketju.alue, MAX(Viesti.aikaleima) AS aikaleima, COUNT(Viesti.id_tunnus) AS maara FROM Ketju LEFT JOIN Viesti ON Viesti.ketju = Ketju.id_tunnus WHERE alue = ? GROUP BY Ketju.id_tunnus ORDER BY Viesti.aikaleima DESC LIMIT 10");
         stmt.setInt(1, key);
@@ -94,6 +93,10 @@ public class KetjuDao implements Dao<Ketju, Integer> {
 
         return ketjut;
     }
+    
+//    public ArrayList<Ketju> find(Integer key) throws SQLException {
+//        
+//    }
 
     public void insertKetju(String nimi, Integer alue) throws SQLException {
         Connection connection = database.getConnection();
