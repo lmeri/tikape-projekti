@@ -95,15 +95,18 @@ public class KetjuDao implements Dao<Ketju, Integer> {
         return ketjut;
     }
 
-    public void insertKetju(String nimi, Integer alue) throws SQLException {
+    public int insertKetju(String nimi, Integer alue) throws SQLException {
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("INSERT INTO Ketju (nimi, alue) VALUES (?, ?)");
         stmt.setString(1, nimi);
         stmt.setInt(2, alue);
-        stmt.executeUpdate();
+        ResultSet rs = stmt.executeQuery();
+        int id_tunnus = rs.getInt("id_tunnus");
 
         stmt.close();
         connection.close();
+        
+        return id_tunnus;
     }
 
     @Override

@@ -19,7 +19,14 @@ public class Main {
             port(Integer.valueOf(System.getenv("PORT")));
         }
         
-        Database database = new Database("jdbc:sqlite:database.db");
+        String jdbcOsoite = "jdbc:sqlite:database.db";
+        
+        // jos heroku antaa käyttöömme tietokantaosoitteen, otetaan se käyttöön
+        if (System.getenv("DATABASE_URL") != null) {
+            jdbcOsoite = System.getenv("DATABASE_URL");
+        } 
+        
+        Database database = new Database(jdbcOsoite);
         database.init();
 
         AlueDao alueDao = new AlueDao(database);
@@ -63,8 +70,8 @@ public class Main {
         // Metodi uuden ketjun lisäämiseen.
         post("/alueet/:alue", (req, res) -> {
             String nimi = req.queryParams("nimi");
-            ketjuDao.insertKetju(nimi, Integer.parseInt(req.params("alue")));
-            res.redirect("/alueet/" + req.params(":alue"));
+            int x = ketjuDao.insertKetju(nimi, Integer.parseInt(req.params("alue")));
+            res.redirect("/alueet/" + req.params(":alue") + "/" + x);
             return "ok";
         });
 
