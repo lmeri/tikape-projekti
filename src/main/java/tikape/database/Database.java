@@ -13,8 +13,6 @@ public class Database {
         this.databaseAddress = databaseAddress;
     }
 
-    
-
     public void init() {
         List<String> lauseet = null;
         if (this.databaseAddress.contains("postgres")) {
@@ -38,7 +36,7 @@ public class Database {
             System.out.println("Error >> " + t.getMessage());
         }
     }
-    
+
     public Connection getConnection() throws SQLException {
         if (this.databaseAddress.contains("postgres")) {
             try {
@@ -57,7 +55,7 @@ public class Database {
 
         return DriverManager.getConnection(databaseAddress);
     }
-    
+
     private List<String> postgreLauseet() {
         ArrayList<String> lista = new ArrayList<>();
 
@@ -81,8 +79,6 @@ public class Database {
         //lista.add("CREATE TABLE Alue (id integer PRIMARY KEY, nimi varchar(50));");
         //lista.add("CREATE TABLE Ketju (id integer PRIMARY KEY, nimi varchar(50), alue integer NOT NULL, FOREIGN KEY(alue) REFERENCES Alue.id_tunnus);");
         //lista.add("CREATE TABLE Viesti (id_tunnus integer PRIMARY KEY, viesti varchar(500), aikaleima timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, kirjoittaja varchar(16) NOT NULL, ketju integer NOT NULL, FOREIGN KEY(ketju) REFERENCES Ketju(id_tunnus));");
-
-
         return lista;
     }
 }

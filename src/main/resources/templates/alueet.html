@@ -4,11 +4,13 @@
     <head>
         <title>Keskustelufoorumi</title>
         <meta charset="utf-8" />
+        
         <style type="text/css">
             a:hover {background-color:peachpuff; text-decoration: none}
             a:link {color: black; text-decoration: none}
             a:visited {color: darkgray; text-decoration: none}
         </style>
+        
     </head>
 
     <body>
@@ -18,15 +20,16 @@
             <div style="float: left; width: 578px; padding-bottom: 8px;">alue</div>
             <div style="display: inline-block; margin:0 auto; width: 40px; text-align: left; padding-bottom: 8px;">viestejä</div>
             <div style="float: right; width: 260px; text-align: right;  padding-bottom: 8px;">viimeisin</div>
-                <tr th:each="alue: ${alueet}"><br/>
-                    <div id="left" style="float: left; width: 600px;"><a th:href="@{~/alueet/{id} (id=${alue.id})}"><span th:text="${alue.nimi}" style="">Alue nimi</span></a></div>
+                
+            <tr th:each="alue: ${alueet}"><br/>
+                <div id="left" style="float: left; width: 600px;"><a th:href="@{~/alueet/{id} (id=${alue.id})}"><span th:text="${alue.nimi}" style="">Alue nimi</span></a></div>
                 <div id="center" style="display: inline-block; margin:0 auto; width: 40px;"><span th:text="${alue.maara}">maara</span></div>
                 <div id="right" style="float: right; width: 260px; text-align: right"><span th:text="${alue.aikaleima}">aikaleima</span></div>
-                </tr>
+            </tr>
         </div>
 
-        <p/>
-        <p/>
+        <p/><p/>
+        
         <center>
         <form method="POST" action="/alueet">
             Lisää alue (max 50 merkkiä): <br/>
@@ -34,5 +37,6 @@
             <input type="submit" value="Lisää uusi alue"/>
         </form>
         </center>
+        
     </body>
 </html>
