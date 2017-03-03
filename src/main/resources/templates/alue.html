@@ -13,14 +13,21 @@
         
     </head>
 
-    <body>
-        <center><h1>index.ketjut</h1></center>
+    <body bgcolor="#F5ECCE">
+        <center><h1>Viestiketjut</h1></center>
         
         <div id="container" style="width: 900px; text-align: left; padding-left: 20%">
+<<<<<<< HEAD
             <div style="float: left; width: 578px; padding-bottom: 8px;">ketju</div>
             <div style="display: inline-block; margin:0 auto; width: 40px; text-align: left; padding-bottom: 8px;">viestejä</div>
             <div style="float: right; width: 260px; text-align: right; padding-bottom: 8px;">viimeisin</div>
             <tr th:each="ketju: ${ketjut}"><br/>
+=======
+            <div style="float: left; width: 578px; padding-bottom: 8px;">Ketju</div>
+            <div style="display: inline-block; margin:0 auto; width: 40px; text-align: left; padding-bottom: 8px;">Viestejä</div>
+            <div style="float: right; width: 260px; text-align: right; padding-bottom: 8px;">Viimeisin</div>
+                <tr th:each="ketju: ${ketjut}"><br/>
+>>>>>>> 1064fc0d2a1f960c54356cb6e9e329bd57dba128
                 <div id="left" style="float: left; width: 600px;"><a th:href="@{~/alueet/{ids}/{id} (ids=${ketju.alue}, id=${ketju.id})}"><span th:text="${ketju.nimi}">Ketju nimi</span></a></div>
                 <div id="center" style="display: inline-block; margin:0 auto; width: 40px;"><span th:text="${ketju.maara}">maara</span></div>
                 <div id="right" style="float: right; width: 260px; text-align: right"><span th:text="${ketju.aikaleima}">aikaleima</span></div>
