@@ -1,9 +1,0 @@
-{
-    "elements": {},
-    "attributes": {
-        "th:text": {},
-        "th:each": {
-            "context": "li"
-        }
-    }
-}

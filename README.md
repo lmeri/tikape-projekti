@@ -1,6 +1,6 @@
-# tikape-runko
+# tikape-projekti
 
-### Keskustelutfoorumi
+### Keskustelufoorumi
 
 Tietokantojen perusteet -kurssilla tehtävä web-sovellus. Ryhmätyöprojekti.
 
