@@ -67,7 +67,18 @@ public class Database {
         lista.add("CREATE TABLE Alue (id_tunnus SERIAL PRIMARY KEY, nimi varchar(50));");
         lista.add("CREATE TABLE Ketju (id_tunnus SERIAL PRIMARY KEY, nimi varchar(50), alue integer NOT NULL, FOREIGN KEY(alue) REFERENCES Alue.id_tunnus);");
         lista.add("CREATE TABLE Viesti (id_tunnus SERIAL PRIMARY KEY, viesti varchar(500), aikaleima timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, kirjoittaja varchar(16) NOT NULL, ketju integer NOT NULL, FOREIGN KEY(ketju) REFERENCES Ketju(id_tunnus));");
-        //lista.add("INSERT INTO Tuote (nimi) VALUES ('postgresql-tuote');");
+
+        lista.add("INSERT INTO Alue (nimi) VALUES ('Tapahtumat');");
+        lista.add("INSERT INTO Alue (nimi) VALUES ('Kurssit');");
+        
+        lista.add("INSERT INTO Ketju (nimi, alue) VALUES ('SPEX MEX', 1);");
+        lista.add("INSERT INTO Ketju (nimi, alue) VALUES ('Tietokantojen perusteet', 2);");
+        lista.add("INSERT INTO Ketju (nimi, alue) VALUES ('Helsinginkadun Appro 2017', 1);");
+        lista.add("INSERT INTO Ketju (nimi, alue) VALUES ('Tietorakenteet ja algoritmit', 2);");
+        
+        lista.add("INSERT INTO Viesti (viesti, aikaleima, kirjoittaja, ketju) VALUES ('Kyllä minä niin mieleni pahoitin', '03/03/2015 15:34', 'Mielensäpahoittaja', 4);");
+        lista.add("INSERT INTO Viesti (viesti, aikaleima, kirjoittaja, ketju) VALUES ('Leipää ja sirkushuveja', '05/03/2015 11:30', 'Kulturelli', 1);");
+        lista.add("INSERT INTO Viesti (viesti, aikaleima, kirjoittaja, ketju) VALUES ('To be or not to be', '05/03/2015 17:57', 'Tyyppi', 1);");
 
         return lista;
     }
@@ -76,9 +87,11 @@ public class Database {
         ArrayList<String> lista = new ArrayList<>();
 
         // tietokantataulujen luomiseen tarvittavat komennot suoritusjärjestyksessä
-        //lista.add("CREATE TABLE Alue (id integer PRIMARY KEY, nimi varchar(50));");
-        //lista.add("CREATE TABLE Ketju (id integer PRIMARY KEY, nimi varchar(50), alue integer NOT NULL, FOREIGN KEY(alue) REFERENCES Alue.id_tunnus);");
-        //lista.add("CREATE TABLE Viesti (id_tunnus integer PRIMARY KEY, viesti varchar(500), aikaleima timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, kirjoittaja varchar(16) NOT NULL, ketju integer NOT NULL, FOREIGN KEY(ketju) REFERENCES Ketju(id_tunnus));");
+//        lista.add("CREATE TABLE Alue (id integer PRIMARY KEY, nimi varchar(50));");
+//        lista.add("CREATE TABLE Ketju (id integer PRIMARY KEY, nimi varchar(50), alue integer NOT NULL, FOREIGN KEY(alue) REFERENCES Alue.id_tunnus);");
+//        lista.add("CREATE TABLE Viesti (id_tunnus integer PRIMARY KEY, viesti varchar(500), aikaleima timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, kirjoittaja varchar(16) NOT NULL, ketju integer NOT NULL, FOREIGN KEY(ketju) REFERENCES Ketju(id_tunnus));");
+
+
         return lista;
     }
 }

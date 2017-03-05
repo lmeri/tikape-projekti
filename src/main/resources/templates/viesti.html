@@ -2,19 +2,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title>Keskustelufoorumi || viestit</title>
+        <title>Keskustelufoorumi || Viestit</title>
         <meta charset="UTF-8" />
         
         <style type="text/css">
+            *{font-family: "Century Gothic", sans-serif;}
             body {background-color: #FFFBEE;}
             
             a:hover {background-color:peachpuff; text-decoration: none; cursor: pointer}
-            a:link {color: black; text-decoration: none}
-            a:visited {color: darkgray; text-decoration: none}
+            a:link {color: darkgray; text-decoration: none;}
+            a:visited {color: dimgray; text-decoration: none}
             
-            .button {background-color: gainsboro; color: black; border: 1px solid darkgray; border-radius: 3px}
-            .button:hover {background-color: darkgray; color: whitesmoke; cursor: pointer}
+            .button {background-color: gainsboro; color: black; 
+                    border: 1px solid darkgray; border-radius: 3px;}
             
+            .button:hover {background-color: darkgray; 
+                   color: whitesmoke; cursor: pointer}
+            
+            #boksi {background-color: #fcfcf4; border: 1px solid black; 
+                    width: 500px; padding-top: 3px; padding-left: 3px; 
+                    padding-bottom: 3px; overflow: auto; 
+                    box-shadow: 7px 5px darkgray }
+            
+            #contain {width: 500px; text-align: left; position: absolute; left: 50%; margin-left: -250px;}
+            
+            h1 {font-family: "Century Gothic", sans-serif; color: black}
         </style>
         
     </head>
@@ -24,7 +36,7 @@
         
         <center>
             <tr th:each="viesti: ${viestit}">
-                <div style="border: 1px solid black; width: 500px; padding-top: 3px; padding-left: 3px; padding-bottom: 3px; overflow: auto;">
+                <div id="boksi">
                 <text style="float: left">@:</text> <span th:text="${viesti.kirjoittaja}" style="float: left"> Kirjoittaja</span><br/>
                 <span th:text="${viesti.aikaleima}" style="float: left; border-bottom: 1px dotted black">aika</span><br/>
                 <div style="width: 500px; float: left">  
@@ -36,20 +48,22 @@
         </center>
         
         
-        <center>
-        <form method="POST" id="kentta" style=" padding-top: 40px">
-            Kirjoittaja (max 16 merkkiä):  <br/>
-            <input type="text" name="kirjoittaja"/><br/>
-            Viesti (max 500 merkkiä): <br/>
-            <textarea rows="4" cols="50" name="viesti" form="kentta"></textarea><br/>
+
+    <div id="contain">
+        <form method="POST" id="kentta" style=" padding-top: 40px; margin-bottom: 50px;">
+            <div style="border-left: 5px solid lightgray">  Kommentoi</div><br/>
+            <input type="text" name="kirjoittaja" maxlength="16" placeholder="Käyttäjänimi"/><br/>
+            <textarea rows="4" cols="45" name="viesti" form="kentta" style="padding-bottom: 3px;" maxlength="500" placeholder="Viesti"></textarea><br/>
             <input class="button" type="submit" value="Lisää uusi viesti"/>
         </form>
-        </center>
+        <div style="padding-top: 20px; text-align: center">
+            <a href="/alueet">[etusivu]</a><a href="javascript:history.back()">[edellinen]</a>
+        </div>
+    </div>
+
         
         <p/><p/><p/><p/>
         
-        <center>
-             <a href="/alueet">[etusivu]</a><a href="javascript:history.back()">[edellinen]</a>
-        </center>
+        
     </body>
 </html>

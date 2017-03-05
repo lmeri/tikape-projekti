@@ -15,7 +15,6 @@ public class Ketju {
         this.id_tunnus = id_tunnus;
         this.nimi = nimi;
         this.alue = alue;
-        this.aikaleima = "ketju on tyhjä";
     }
 
     public Integer getId() {

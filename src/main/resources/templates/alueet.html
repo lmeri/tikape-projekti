@@ -6,20 +6,28 @@
         <meta charset="utf-8" />
         
         <style type="text/css">
+            *{font-family: "Century Gothic", sans-serif;}
             body {background-color: #FFFBEE;}
             
             a:hover {background-color:peachpuff; text-decoration: none; cursor: pointer}
-            a:link {color: black; text-decoration: none}
-            a:visited {color: darkgray; text-decoration: none}
+            a:link {color: darkgray; text-decoration: none;}
+            a:visited {color: dimgray; text-decoration: none}
             
-            .button {background-color: gainsboro; color: black; border: 1px solid darkgray; border-radius: 3px}
+            .button {background-color: gainsboro; color: black; 
+                    border: 1px solid darkgray; border-radius: 3px;}
+            
             .button:hover {background-color: darkgray; color: whitesmoke; cursor: pointer}
             
             #container {width: 900px; text-align: left; margin: auto;}
             #left {float: left; width: 600px;}
             #center {display: inline-block; margin:0 auto; width: 40px;}
             #right {float: right; width: 260px; text-align: right;}
-            #line {width: 900px; padding-bottom: 10px; border-bottom-color: darkgray; border-bottom-style: solid; border-bottom-width: 1px;}
+            #line {width: 900px; padding-bottom: 10px; 
+                   border-bottom-color: darkgray; border-bottom-style: solid; 
+                   border-bottom-width: 1px;}
+            
+            h1 {font-family: "Century Gothic", sans-serif; color: black}
+
             
         </style>
         
@@ -43,10 +51,9 @@
         
         <center>
             <form method="POST" action="/alueet" style=" padding-top: 40px">
-            Lisää alue (max 50 merkkiä): <br/>
-            <input type="text" name="nimi"/><br/>
-            <input class="button" type="submit" value="Lisää uusi alue"/>
-        </form>
+                <input type="text" name="nimi" style="padding-bottom: 3px;" maxlength="50" placeholder="Otsikko"/><br/>
+                <input class="button" type="submit" value="Lisää uusi alue"/>
+            </form>
         </center>
         
     </body>

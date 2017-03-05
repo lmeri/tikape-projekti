@@ -23,7 +23,6 @@ public class Alue {
     public Alue(Integer i, String n) {
         this.id = i;
         this.nimi = n;
-        this.aikaleima = "tyhjä";
         
     }
 

@@ -1,4 +1,8 @@
 # tikape-runko
 
-Tietokantojen perusteet -kurssilla tehtävän web-sovelluksen pohja.
+### Keskustelutfoorumi
+
+Tietokantojen perusteet -kurssilla tehtävä web-sovellus. Ryhmätyöprojekti.
+
+
 

@@ -112,8 +112,6 @@ public class ViestiDao implements Dao<Viesti, Integer>{
         
         Timestamp a = new Timestamp(System.currentTimeMillis());
         String aika = new SimpleDateFormat("dd/MM/yyyy HH:mm").format(a);
-        //String aika = a.toString();
-        
         
         PreparedStatement stmt = connection.prepareStatement("INSERT INTO Viesti (viesti, aikaleima, kirjoittaja, ketju) VALUES (?, ?, ?, ?)");
 

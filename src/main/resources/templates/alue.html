@@ -2,24 +2,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title>Keskustelufoorumi || ketjut</title>
+        <title>Keskustelufoorumi || Ketjut</title>
         <meta charset="utf-8" />
         
         <style type="text/css">
-            body {background-color: #FFFBEE;}
             
-            a:hover {background-color:peachpuff; text-decoration: none; cursor: pointer}
-            a:link {color: black; text-decoration: none}
-            a:visited {color: darkgray; text-decoration: none}
+            *{font-family: "Century Gothic", sans-serif;}
+            body {background-color: #FFFBEE; }
             
-            .button {background-color: gainsboro; color: black; border: 1px solid darkgray; border-radius: 3px}
+            a:hover {background-color:peachpuff; text-decoration: none; cursor: pointer;}
+            a:link {color: darkgray; text-decoration: none;}
+            a:visited {color: dimgray; text-decoration: none}
+            
+            .button {background-color: gainsboro; color: black; 
+                    border: 1px solid darkgray; border-radius: 3px;}            
             .button:hover {background-color: darkgray; color: whitesmoke; cursor: pointer}
             
             #container {width: 900px; text-align: left; margin: auto;}
             #left {float: left; width: 600px;}
             #center {display: inline-block; margin:0 auto; width: 40px;}
             #right {float: right; width: 260px; text-align: right;}
-            #line {width: 900px; padding-bottom: 10px; border-bottom-color: darkgray; border-bottom-style: solid; border-bottom-width: 1px;}
+            #line {width: 900px; padding-bottom: 10px; 
+                   border-bottom-color: darkgray; border-bottom-style: solid; 
+                   border-bottom-width: 1px;}
+            
+            h1 {font-family: "Century Gothic", sans-serif; color: black}
             
         </style>
         
@@ -41,17 +48,14 @@
         </div>
         
         <center>
-        <form method="POST" style=" padding-top: 40px">
-            Lisää ketju (max 50 merkkiä):  <br/>
-            <input type="text" name="nimi"/><br/>
+        <form method="POST" style=" padding-top: 40px; margin-bottom: 50px;">
+            <input type="text" name="nimi" style="padding-bottom: 3px;" maxlength="50" placeholder="Otsikko"/><br/>
             <input class="button" type="submit" value="Lisää uusi ketju"/>
         </form>
         </center>
-        
-        <p/><p/><p/><p/>
-        
-        <center>
-             <a href="/alueet">[etusivu]</a><a href="javascript:history.back()">[edellinen]</a>
-        </center>
+
+        <center><a href="/alueet">[etusivu]</a><a href="javascript:history.back()">[edellinen]</a></center>
+
+
     </body>
 </html>
