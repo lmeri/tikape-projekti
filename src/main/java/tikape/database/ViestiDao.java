@@ -22,11 +22,9 @@ import tikape.domain.Viesti;
 public class ViestiDao implements Dao<Viesti, Integer>{
     
     private Database database;
-    //private Dao<Ketju, Integer> ketjuDao;
     
     public ViestiDao(Database database) {
         this.database = database;
-        //this.ketjuDao = ketjuDao;
     }
 
     @Override

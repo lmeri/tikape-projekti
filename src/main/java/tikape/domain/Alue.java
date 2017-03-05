@@ -8,10 +8,6 @@ package tikape.domain;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-/**
- *
- * @author mkatri
- */
 public class Alue {
 
     private Integer id;

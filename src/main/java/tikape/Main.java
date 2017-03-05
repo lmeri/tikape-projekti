@@ -66,8 +66,7 @@ public class Main {
             String nimi = req.queryParams("nimi");
             alueDao.insertAlue(nimi);
             res.redirect("/alueet");
-            
-            return "[ERROR]";
+            return "[404]";
         });
 
         // Metodi uuden ketjun lisäämiseen.
@@ -75,7 +74,7 @@ public class Main {
             String nimi = req.queryParams("nimi");
             ketjuDao.insertKetju(nimi, Integer.parseInt(req.params("alue")));
             res.redirect("/alueet/" + req.params(":alue"));
-            return "[ERROR]";
+            return "[404]";
         });
 
         // Metodi uuden viestin lisäämiseen.
@@ -84,7 +83,7 @@ public class Main {
             String viesti = req.queryParams("viesti");
             viestiDao.insertViesti(nimi, viesti, Integer.parseInt(req.params("viesti")));
             res.redirect("/alueet/" + req.params(":alue") + "/" + req.params(":viesti"));
-            return "[ERROR]";
+            return "[404]";
         });
     }
 }

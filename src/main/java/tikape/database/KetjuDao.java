@@ -16,11 +16,9 @@ import tikape.domain.Viesti;
 public class KetjuDao implements Dao<Ketju, Integer> {
 
     private Database database;
-    //private Dao<Alue, Integer> alueDao;
 
     public KetjuDao(Database database) {
         this.database = database;
-        //this.alueDao = alueDao;
     }
 
     @Override
@@ -49,7 +47,6 @@ public class KetjuDao implements Dao<Ketju, Integer> {
 
     @Override
     public List<Ketju> findAll() throws SQLException {
-
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Ketju");
 
@@ -93,10 +90,6 @@ public class KetjuDao implements Dao<Ketju, Integer> {
 
         return ketjut;
     }
-    
-//    public ArrayList<Ketju> find(Integer key) throws SQLException {
-//        
-//    }
 
     public void insertKetju(String nimi, Integer alue) throws SQLException {
         Connection connection = database.getConnection();
